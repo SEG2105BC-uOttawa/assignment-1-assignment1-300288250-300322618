@@ -33,7 +33,7 @@ public class PointCPTest
    */
   public static void main(String[] args)
   {
-    PointCP point;
+    PointCP5 point = null;
 
     System.out.println("Cartesian-Polar Coordinates Conversion Program");
 
@@ -42,9 +42,15 @@ public class PointCPTest
     // If he did not, prompt the user for them.
     try
     {
-      point = new PointCP(args[0].toUpperCase().charAt(0), 
-        Double.valueOf(args[1]).doubleValue(), 
-        Double.valueOf(args[2]).doubleValue());
+      char coordType = args[0].toUpperCase().charAt(0);
+      double xOrRho = Double.valueOf(args[1]).doubleValue();
+      double yOrTheta = Double.valueOf(args[2]).doubleValue();
+
+      if (coordType == 'C') {
+        point = new PointCP3(coordType, xOrRho, yOrTheta);
+      }else if (coordType == 'P') {
+        point = new PointCP2(coordType, xOrRho, yOrTheta);
+      }
     }
     catch(Exception e)
     {
@@ -64,23 +70,21 @@ public class PointCPTest
       }
     }
     System.out.println("\nYou entered:\n" + point);
-    point.convertStorageToCartesian();
-    System.out.println("\nAfter asking to store as Cartesian:\n" + point);
-    point.convertStorageToPolar();
-    System.out.println("\nAfter asking to store as Polar:\n" + point);
+    System.out.println("\nAfter asking to store as Cartesian:\n" + "(" + point.getX() + "," + point.getY() + ")");
+    System.out.println("\nAfter asking to store as Polar:\n"  + "[" + point.getRho() + "," + point.getTheta() + "]");
   }
 
   /**
    * This method obtains input from the user and verifies that
-   * it is valid.  When the input is valid, it returns a PointCP
-   * object.
+   * it is valid.  When the input is valid, it returns a PointCP2
+   * or PointCP3 object.
    *
    * @return A PointCP constructed using information obtained 
    *         from the user.
    * @throws IOException If there is an error getting input from
    *         the user.
    */
-  private static PointCP getInput() throws IOException
+  private static PointCP5 getInput() throws IOException
   {
     byte[] buffer = new byte[1024];  //Buffer to hold byte input
     boolean isOK = false;  // Flag set if input correct
@@ -157,7 +161,12 @@ public class PointCPTest
       //Reset flag so while loop will prompt for other arguments
       isOK = false;
     }
-    //Return a new PointCP object
-    return (new PointCP(coordType, a, b));
+    ///Return a new PointCP object
+    if (coordType == 'C') {
+        return new PointCP2(coordType, a, b);
+    }
+    else{
+        return new PointCP3(coordType, a, b);
+    }
   }
 }
