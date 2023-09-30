@@ -7,7 +7,7 @@
  * 
  */
 
-public class PointCP2{
+public class PointCP2 extends PointCP5{
 
   //Instance variables ************************************************
 
