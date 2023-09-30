@@ -6,7 +6,7 @@
  *
  * Edited base on the class PointCP.java
  */
-public class PointCP3 {
+public class PointCP3 extends PointCP5 {
 
     //Instance variables ************************************************
 
