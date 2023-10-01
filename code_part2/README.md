@@ -1,10 +1,14 @@
 
 import java.util.ArrayList;
+
 import java.util.Vector;
+
 import java.util.Random;
+
 import java.util.Iterator;
 
 public class Collection{
+
 	public static long constructArrayList(int size){
 		long startTime= System.currentTimeMillis();
 		ArrayList<Integer> arrayList1 = new ArrayList<>();
