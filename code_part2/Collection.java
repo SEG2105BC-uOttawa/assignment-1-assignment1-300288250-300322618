@@ -120,10 +120,7 @@ public class Collection{
 		System.out.println("Vector: "+ vectorTimeIter);
 		System.out.println(" Array: "+ arrayTimeIter);
 
-		System.out.println("\nAs we can see from the data presented, the construction time and the \niteration time of the ArrayList takes the longest.");
-		System.out.println("We can see that the time for the construction and iteration of a Vector takes less time.");
-		System.out.println("However, the construction as well as the iteration of an Array takes the least amount of time, making it the most time efficient out of all three of them.");
-		System.out.println("So, from these conclusions, it would be recommended to use Arrays out of all of them as they are the most time efficient.");
+		
 	}
 	
 }
